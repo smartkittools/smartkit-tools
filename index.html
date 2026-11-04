@@ -41,14 +41,6 @@
       <label class="lbl" for="textInput">Your text</label>
       <textarea id="textInput" placeholder="Type or paste your text here"></textarea>
 
-      <div class="stats" aria-live="polite">
-        <div class="stat" id="s-words"><b id="words">0</b><span>Words</span></div>
-        <div class="stat" id="s-chars"><b id="chars">0</b><span>Characters</span></div>
-        <div class="stat"><b id="noSpaces">0</b><span>Without spaces</span></div>
-        <div class="stat"><b id="lines">0</b><span>Lines</span></div>
-        <div class="stat"><b id="read">0 min</b><span>Reading time</span></div>
-      </div>
-
       <div class="panel row" data-tools="case">
         <button class="btn" data-act="upper">UPPERCASE</button>
         <button class="btn" data-act="lower">lowercase</button>
@@ -65,6 +57,16 @@
         <button class="btn" data-act="spaces">Remove extra spaces</button>
       </div>
 
+      <p id="message" role="status"></p>
+
+      <div class="stats" aria-live="polite">
+        <div class="stat" id="s-words"><b id="words">0</b><span>Words</span></div>
+        <div class="stat" id="s-chars"><b id="chars">0</b><span>Characters</span></div>
+        <div class="stat"><b id="noSpaces">0</b><span>Without spaces</span></div>
+        <div class="stat"><b id="lines">0</b><span>Lines</span></div>
+        <div class="stat"><b id="read">0 min</b><span>Reading time</span></div>
+      </div>
+
       <div class="row end">
         <div class="row" style="margin:0">
           <button class="btn" data-act="copy">Copy text</button>
@@ -72,7 +74,6 @@
         </div>
         <button class="btn ghost" data-act="clear">Clear</button>
       </div>
-      <p id="message" role="status"></p>
     </div>
   </section>
 

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://smartkit-tools.babu-com300.workers.dev/sitemap.xml
