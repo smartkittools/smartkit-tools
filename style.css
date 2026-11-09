@@ -2,7 +2,7 @@
 :root[data-theme=dark]{--bg:#0a1311;--surface:#111d1a;--ink:#e8f2ef;--muted:#93aaa4;--line:#213630;--accent:#3fc8a8;--accent-h:#6ad9bf;--accent2:#2aa88c;--on:#06201a;--soft:#143029;--ok:#6ad9bf;--shadow:0 1px 2px rgba(0,0,0,.4),0 12px 36px rgba(0,0,0,.4)}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "Inter","Segoe UI",system-ui,-apple-system,"Noto Sans Bengali",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+body{margin:0;overflow-x:clip;background:var(--bg);color:var(--ink);font:16px/1.65 "Inter","Segoe UI",system-ui,-apple-system,"Noto Sans Bengali",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:var(--accent)}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 [hidden]{display:none!important}
@@ -22,7 +22,7 @@ h1 em{font-style:normal;color:var(--accent)}
 h2{font-size:26px;letter-spacing:-.02em;margin:0 0 12px;line-height:1.25}
 .lead{color:var(--muted);max-width:58ch;margin:0;font-size:17px}
 .hero{padding:56px 0 32px;position:relative}
-.hero::before{content:"";position:absolute;inset:-70px 0 auto;height:380px;z-index:-1;background:radial-gradient(55% 70% at 88% 0,var(--soft),transparent 70%),radial-gradient(40% 60% at 4% 8%,var(--soft),transparent 70%)}
+.hero::before{content:"";position:absolute;top:-70px;left:50%;width:100vw;height:380px;transform:translateX(-50%);z-index:-1;background:radial-gradient(55% 70% at 88% 0,var(--soft),transparent 70%),radial-gradient(40% 60% at 4% 8%,var(--soft),transparent 70%)}
 .pills{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0;padding:0;list-style:none}
 .pills li{font-size:14px;font-weight:600;color:var(--accent);background:var(--surface);border:1px solid var(--line);padding:6px 13px;border-radius:999px}
 .pills li::before{content:"✓ ";font-weight:800}
@@ -49,7 +49,8 @@ textarea:focus{outline:3px solid var(--accent);outline-offset:0;border-color:var
 .row label{display:flex;align-items:center;gap:6px;font-size:15px;margin-right:8px}
 .row input[type=checkbox]{width:18px;height:18px;accent-color:var(--accent)}
 .row.end{justify-content:space-between;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
-#message{min-height:24px;margin:10px 0 0;color:var(--ok);font-size:14px;font-weight:600}
+#message{margin:0;color:var(--ok);font-size:14px;font-weight:600}
+#message:not(:empty){margin:10px 0 0;min-height:24px}
 .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:8px 0 18px}
 .tile{background:var(--bg);color:var(--ink);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;min-height:48px;font:inherit;font-weight:600;cursor:pointer;text-align:left}
 .tile:hover{border-color:var(--accent)}
