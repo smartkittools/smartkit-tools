@@ -24,11 +24,12 @@
 
 <main class="wrap">
   <section class="hero">
-    <h1>Clean, count and convert text in seconds</h1>
+    <h1>Clean, count and <em>convert text</em> in seconds</h1>
     <p class="lead">Free text tools that run in your browser. Nothing you type is uploaded or saved.</p>
+    <ul class="pills"><li>Free</li><li>No sign-up</li><li>Private, runs in your browser</li></ul>
   </section>
 
-  <section class="bench" aria-label="Text tools">
+  <section class="bench" id="tools" aria-label="Text tools">
     <div class="tabs" role="tablist" aria-label="Choose a tool">
       <button class="tab" role="tab" data-tool="words">Word Counter</button>
       <button class="tab" role="tab" data-tool="chars">Character Counter</button>
@@ -78,8 +79,12 @@
   </section>
 
   <section class="block">
-    <h2>More tools</h2>
-    <p class="lead"><a href="application-letter.html">Application Letter Generator</a>: create a leave application, job application, admission request or school transfer letter in seconds.</p>
+    <h2>All tools</h2>
+    <div class="cards">
+      <a class="card" href="#tools"><div class="ic">Aa</div><h3>Text tools</h3><p>Word counter, character counter, case converter, duplicate line remover and space cleaner.</p></a>
+      <a class="card" href="application-letter.html"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg></div><h3>Application Letter Generator</h3><p>Leave, job, admission and school transfer letters in English, ready to copy.</p></a>
+      <a class="card" href="dorkhast.html"><div class="ic">অ</div><h3>বাংলা দরখাস্ত লিখুন</h3><p>ছুটি, চাকরি, ভর্তি ও ছাড়পত্রের দরখাস্ত বাংলায় লিখুন।</p></a>
+    </div>
   </section>
 
   <section class="block" id="about">

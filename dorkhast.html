@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>বাংলা দরখাস্ত লিখুন - ছুটির দরখাস্ত, চাকরির দরখাস্ত | SmartKit Tool</title>
+<meta name="description" content="ছুটির দরখাস্ত, চাকরির দরখাস্ত, ভর্তির আবেদন ও ছাড়পত্রের আবেদন মিনিটেই লিখুন। একদম ফ্রি, সাইন-আপ ছাড়াই ফোনে ব্যবহার করা যায়।">
+<meta name="theme-color" content="#0d7c66">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230d7c66'/%3E%3Ctext x='16' y='22' font-size='17' font-weight='800' text-anchor='middle' fill='white' font-family='Arial'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<style>.paper{font:17px/1.9 "Noto Serif Bengali","Kalpurush","Siyam Rupali",Georgia,serif}</style>
+<script>try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="index.html"><span class="mark">S</span>SmartKit Tool</a>
+  <nav><a href="index.html">Text tools</a><a href="application-letter.html">English</a>
+    <button class="icon-btn" id="theme" aria-label="Switch light or dark theme">◐</button></nav>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>মিনিটেই লিখুন বাংলা দরখাস্ত</h1>
+    <p class="lead">দরখাস্তের ধরন বাছুন, কয়েকটি তথ্য দিন, আর তৈরি দরখাস্ত কপি করে নিন। একদম ফ্রি, সাইন-আপ লাগে না, আপনার তথ্য ফোনেই থাকে।</p>
+  </section>
+
+  <section class="bench"><div class="work">
+    <label class="lbl">১. দরখাস্তের ধরন বাছুন</label>
+    <div class="tiles" id="types" role="group" aria-label="দরখাস্তের ধরন"></div>
+    <label class="lbl">লেখার ধরন</label>
+    <div class="seg" id="tones" role="group" aria-label="লেখার ধরন">
+      <button type="button" data-t="modern" aria-pressed="true">আধুনিক</button>
+      <button type="button" data-t="classic" aria-pressed="false">প্রচলিত</button>
+    </div>
+    <label class="lbl">২. আপনার তথ্য দিন</label>
+    <form id="f" autocomplete="off">
+      <div class="grid" id="fields"></div>
+      <datalist id="reasons">
+        <option value="অসুস্থতার কারণে">
+        <option value="পারিবারিক অনুষ্ঠানের কারণে">
+        <option value="জরুরি পারিবারিক কাজের কারণে">
+        <option value="আত্মীয়ের অসুস্থতার কারণে">
+      </datalist>
+      <button class="btn" type="submit">দরখাস্ত তৈরি করুন</button>
+      <p id="err" role="status"></p>
+    </form>
+    <div id="result" hidden>
+      <label class="lbl">৩. আপনার দরখাস্ত</label>
+      <div class="paper" id="out"></div>
+      <div class="bt">
+        <button class="btn" id="copy" type="button">কপি করুন</button>
+        <button class="btn ghost" id="print" type="button">প্রিন্ট</button>
+        <button class="btn ghost" id="again" type="button">তথ্য বদলান</button>
+      </div>
+      <p style="color:var(--muted);font-size:14px">পাঠানোর আগে নাম, তারিখ ও তথ্যগুলো একবার পড়ে নিন।</p>
+    </div>
+  </div></section>
+
+  <section class="block faq">
+    <h2>সাধারণ প্রশ্ন</h2>
+    <details><summary>আমার তথ্য কি কোথাও জমা থাকে?</summary><p>না। দরখাস্ত আপনার ব্রাউজারেই তৈরি হয়, কোনো তথ্য আমাদের কাছে পাঠানো বা জমা রাখা হয় না।</p></details>
+    <details><summary>কোন কোন দরখাস্ত লেখা যায়?</summary><p>ছুটির দরখাস্ত, চাকরির দরখাস্ত, ভর্তির আবেদন এবং ছাড়পত্র (ট্রান্সফার সার্টিফিকেট) নেওয়ার আবেদন। আরও ধরন পরে যোগ হবে।</p></details>
+    <details><summary>আধুনিক আর প্রচলিত ধরনের পার্থক্য কী?</summary><p>আধুনিক ধরনে সরাসরি ও সহজ ভাষায় লেখা হয়। প্রচলিত ধরনে "সবিনয় নিবেদন এই যে" ও "বিনীত নিবেদক"-এর মতো চিরাচরিত ভাষা ব্যবহার হয়।</p></details>
+    <details><summary>এটি কি ফ্রি?</summary><p>হ্যাঁ, সম্পূর্ণ ফ্রি।</p></details>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <div>© <span id="y">2026</span> SmartKit Tool</div>
+  <div><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy Policy</a></div>
+</div></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const O={day:'numeric',month:'long',year:'numeric'};
+const fmtD=d=>d.toLocaleDateString('bn-BD',O).replace(',','');
+const fmt=s=>fmtD(new Date(s+'T00:00:00'));
+const bn=n=>n.toLocaleString('bn-BD');
+const today=()=>new Date().toISOString().slice(0,10);
+function range(s,n){const a=new Date(s+'T00:00:00');if(n<2)return fmtD(a)+' তারিখে';const b=new Date(a);b.setDate(a.getDate()+n-1);return fmtD(a)+' থেকে '+fmtD(b)+' পর্যন্ত'}
+const LD={id:'ldate',l:'দরখাস্তের তারিখ',type:'date',def:'today'};
+const T={
+leave:{name:'ছুটির দরখাস্ত',fields:[
+ {id:'who',l:'আপনি',type:'select',opts:['শিক্ষার্থী','কর্মচারী']},
+ {id:'name',l:'আপনার নাম',ph:'যেমন: রহিম উদ্দিন'},
+ {id:'role',l:'শ্রেণি বা পদ',ph:'যেমন: ৮ম শ্রেণি, রোল ১২ / বিক্রয় কর্মকর্তা'},
+ {id:'org',l:'প্রতিষ্ঠানের নাম',ph:'যেমন: কাজী নজরুল উচ্চ বিদ্যালয়'},
+ {id:'addr',l:'প্রতিষ্ঠানের ঠিকানা',ph:'যেমন: ধানমন্ডি, ঢাকা',opt:1},
+ {id:'reason',l:'ছুটির কারণ (“কারণে” দিয়ে শেষ করুন)',ph:'যেমন: অসুস্থতার কারণে',list:1},
+ {id:'days',l:'কত দিন',type:'number',ph:'যেমন: ২',half:1},
+ {id:'start',l:'ছুটি শুরুর তারিখ',type:'date',def:'today',half:1},LD],
+ make:(f,m)=>{const st=f.who==='শিক্ষার্থী',n=+f.days,r=range(f.start,n),d=bn(n)+' দিনের';return{
+  to:[st?'প্রধান শিক্ষক':'ব্যবস্থাপক',f.org,f.addr],subject:'ছুটির আবেদন প্রসঙ্গে',
+  body:m?[`আমি ${f.reason} ${r} ${d} ছুটির জন্য আবেদন করছি।`,
+   st?'ছুটির সময়ে যেসব ক্লাস ও পড়া বাদ যাবে, ফিরে এসে তা পুষিয়ে নেব।':'ছুটির আগে জরুরি কাজ শেষ করে যাব এবং ফিরে এসে বাকি কাজ পুষিয়ে নেব।',
+   'দয়া করে আমার ছুটি মঞ্জুর করলে কৃতজ্ঞ থাকব। আপনার সময় ও সহযোগিতার জন্য ধন্যবাদ।']
+  :[`সবিনয় নিবেদন এই যে, আমি ${f.reason} ${r} ${d} ছুটি প্রার্থনা করছি।`,
+   st?'এই সময়ে আমার ক্লাস ও পড়ার যে ক্ষতি হবে, তা আমি পরে পুষিয়ে নেব।':'এই সময়ে আমার কাজের যে ক্ষতি হবে, তা আমি পরে পুষিয়ে নেব।',
+   'অতএব, মহোদয়ের নিকট আকুল আবেদন, আমাকে উক্ত সময়ের জন্য ছুটি মঞ্জুর করে বাধিত করবেন।'],
+  sign:[f.name,f.role]}}},
+job:{name:'চাকরির দরখাস্ত',fields:[
+ {id:'name',l:'আপনার নাম',ph:'যেমন: রহিম উদ্দিন'},
+ {id:'pos',l:'যে পদে আবেদন করছেন',ph:'যেমন: সেলস এক্সিকিউটিভ'},
+ {id:'org',l:'প্রতিষ্ঠানের নাম',ph:'যেমন: আলফা ট্রেডার্স লিমিটেড'},
+ {id:'addr',l:'প্রতিষ্ঠানের ঠিকানা',ph:'যেমন: মতিঝিল, ঢাকা',opt:1},
+ {id:'exp',l:'যোগ্যতা বা অভিজ্ঞতা (একটি বাক্যে)',ph:'যেমন: আমি এইচএসসি পাস করেছি এবং দুই বছরের বিক্রয় অভিজ্ঞতা আছে।',opt:1},
+ {id:'skills',l:'দক্ষতা',ph:'যেমন: কম্পিউটার, যোগাযোগ দক্ষতা',opt:1},
+ {id:'why',l:'এই চাকরি কেন চান (একটি বাক্যে)',ph:'যেমন: আমি আপনার প্রতিষ্ঠানে কাজ করে নিজেকে গড়তে চাই।',opt:1},
+ {id:'contact',l:'মোবাইল নম্বর',ph:'যেমন: ০১৭XXXXXXXX',opt:1},LD],
+ make:(f,m)=>{const mid=[f.exp,f.skills?'আমার দক্ষতার মধ্যে রয়েছে '+f.skills+'।':'',f.why].filter(Boolean).join(' ');return{
+  to:['ব্যবস্থাপক',f.org,f.addr],subject:f.pos+' পদে চাকরির আবেদন প্রসঙ্গে',close:m?'ধন্যবাদান্তে,':'আপনার বিশ্বস্ত,',
+  body:[m?`আমি আপনার প্রতিষ্ঠানে ${f.pos} পদে চাকরির জন্য আবেদন করছি।`:`সবিনয় নিবেদন এই যে, আমি আপনার প্রতিষ্ঠানে ${f.pos} পদে চাকরির আবেদন করছি।`,mid,
+   m?'সাক্ষাৎকারের জন্য আপনাদের সুবিধামতো সময়ে উপস্থিত হতে পারলে আমি আনন্দিত হব। আপনার সময়ের জন্য ধন্যবাদ।':'অতএব, মহোদয়ের নিকট আকুল আবেদন, আমাকে উক্ত পদে নিয়োগের সুযোগ দিয়ে বাধিত করবেন।'].filter(Boolean),
+  sign:[f.name,f.contact?'মোবাইল: '+f.contact:'']}}},
+adm:{name:'ভর্তির আবেদন',fields:[
+ {id:'name',l:'শিক্ষার্থীর নাম',ph:'যেমন: মায়া খাতুন'},
+ {id:'guard',l:'অভিভাবকের নাম (অভিভাবক লিখলে)',ph:'যেমন: আব্দুল জব্বার',opt:1},
+ {id:'grade',l:'যে শ্রেণিতে ভর্তি হতে চান (“তে” দিয়ে লিখুন)',ph:'যেমন: ষষ্ঠ শ্রেণিতে'},
+ {id:'org',l:'স্কুলের নাম',ph:'যেমন: কাজী নজরুল উচ্চ বিদ্যালয়'},
+ {id:'addr',l:'স্কুলের ঠিকানা',ph:'যেমন: ধানমন্ডি, ঢাকা',opt:1},
+ {id:'prev',l:'আগের স্কুলের নাম',ph:'যেমন: পূর্বাচল প্রাথমিক বিদ্যালয়',opt:1},
+ {id:'why',l:'কারণ বা বাড়তি তথ্য (একটি বাক্যে)',ph:'যেমন: আমাদের পরিবার এই এলাকায় চলে এসেছে।',opt:1},LD],
+ make:(f,m)=>{const g=!!f.guard,fo=m?'':'সবিনয় নিবেদন এই যে, ';return{
+  to:['প্রধান শিক্ষক',f.org,f.addr],subject:'ভর্তির আবেদন প্রসঙ্গে',
+  body:[g?`${fo}আমি ${f.name} নামের শিক্ষার্থীকে আপনার প্রতিষ্ঠানে ${f.grade} ভর্তি করাতে ইচ্ছুক।`:`${fo}আমি আপনার প্রতিষ্ঠানে ${f.grade} ভর্তি হতে ইচ্ছুক।`,
+   [f.prev?'আগের প্রতিষ্ঠান: '+f.prev+'।':'',f.why].filter(Boolean).join(' '),
+   m?'ভর্তির জন্য কী কী কাগজপত্র ও নিয়ম প্রয়োজন, তা জানালে কৃতজ্ঞ থাকব। আপনার সময়ের জন্য ধন্যবাদ।':`অতএব, মহোদয়ের নিকট আকুল আবেদন, ${g?'উক্ত শিক্ষার্থীকে':'আমাকে'} উক্ত শ্রেণিতে ভর্তির সুযোগ দিয়ে বাধিত করবেন।`].filter(Boolean),
+  sign:g?[f.guard,'অভিভাবক, '+f.name]:[f.name]}}},
+tc:{name:'ছাড়পত্রের আবেদন',fields:[
+ {id:'name',l:'শিক্ষার্থীর নাম',ph:'যেমন: মায়া খাতুন'},
+ {id:'guard',l:'অভিভাবকের নাম (অভিভাবক লিখলে)',ph:'যেমন: আব্দুল জব্বার',opt:1},
+ {id:'cls',l:'বর্তমান শ্রেণি',ph:'যেমন: ৮ম শ্রেণি, রোল ১২'},
+ {id:'org',l:'স্কুলের নাম',ph:'যেমন: কাজী নজরুল উচ্চ বিদ্যালয়'},
+ {id:'addr',l:'স্কুলের ঠিকানা',ph:'যেমন: ধানমন্ডি, ঢাকা',opt:1},
+ {id:'why',l:'ছাড়পত্র নেওয়ার কারণ',ph:'যেমন: আমাদের পরিবার অন্য এলাকায় চলে যাচ্ছে'},LD],
+ make:(f,m)=>{const g=!!f.guard,fo=m?'':'সবিনয় নিবেদন এই যে, ';return{
+  to:['প্রধান শিক্ষক',f.org,f.addr],subject:'ছাড়পত্রের (টিসি) আবেদন প্রসঙ্গে',
+  body:[g?`${fo}${f.name} নামের শিক্ষার্থী আপনার প্রতিষ্ঠানে বর্তমানে অধ্যয়নরত (${f.cls})। আমি তার অভিভাবক।`:`${fo}আমি আপনার প্রতিষ্ঠানে বর্তমানে অধ্যয়নরত (${f.cls})।`,
+   `${g?'তার':'আমার'} ছাড়পত্র (ট্রান্সফার সার্টিফিকেট) প্রয়োজন। কারণ হলো, ${f.why}।`,
+   m?'দয়া করে ছাড়পত্র ও প্রয়োজনীয় অন্যান্য কাগজপত্র দেওয়ার ব্যবস্থা করলে কৃতজ্ঞ থাকব। কোনো বকেয়া বা আনুষ্ঠানিকতা থাকলে জানালে আমি তা সম্পন্ন করব।':'অতএব, মহোদয়ের নিকট আকুল আবেদন, উক্ত কারণ বিবেচনা করে ছাড়পত্র প্রদান করে বাধিত করবেন।'],
+  sign:g?[f.guard,'অভিভাবক, '+f.name]:[f.name]}}}
+};
+let cur='leave',modern=true;
+function renderTypes(){const b=$('types');b.innerHTML='';Object.keys(T).forEach(k=>{const x=document.createElement('button');x.type='button';x.className='tile';x.textContent=T[k].name;x.setAttribute('aria-pressed',String(k===cur));x.onclick=()=>{cur=k;renderTypes();renderFields();$('result').hidden=true;$('err').textContent=''};b.appendChild(x)})}
+function renderFields(){$('fields').innerHTML=T[cur].fields.map(f=>{
+ const c=f.half?' class="half"':'',lb=f.l+(f.opt?' (ঐচ্ছিক)':'');
+ if(f.type==='select')return `<label${c}>${lb}<select id="f_${f.id}">${f.opts.map(o=>`<option>${o}</option>`).join('')}</select></label>`;
+ return `<label${c}>${lb}<input id="f_${f.id}"${f.opt?'':' required'}${f.type?` type="${f.type}"`:''}${f.type==='number'?' min="1" max="60" inputmode="numeric"':''}${f.list?' list="reasons"':''}${f.ph?` placeholder="${f.ph}"`:''}></label>`}).join('');
+ T[cur].fields.forEach(f=>{if(f.def)$('f_'+f.id).value=today()})}
+document.querySelectorAll('#tones button').forEach(b=>b.onclick=()=>{modern=b.dataset.t==='modern';document.querySelectorAll('#tones button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));if(!$('result').hidden)$('f').requestSubmit()});
+$('f').addEventListener('submit',e=>{e.preventDefault();
+ const f={};T[cur].fields.forEach(x=>f[x.id]=$('f_'+x.id).value.trim());
+ const nm=v=>v.replace(/[.।\s]+$/,'');
+ if(f.reason)f.reason=nm(f.reason);
+ if(cur==='tc'&&f.why)f.why=nm(f.why);
+ if(cur==='leave'&&(!(+f.days>=1)||!f.start)){$('err').textContent='কত দিন এবং ছুটি শুরুর তারিখ দিন।';return}
+ $('err').textContent='';
+ const L=T[cur].make(f,modern);
+ const t=['তারিখ: '+fmt(f.ldate),'','বরাবর',...L.to.filter(Boolean),'','বিষয়: '+L.subject,'',modern?'জনাব,':'মহোদয়,','',L.body.join('\n\n'),'',L.close||(modern?'ধন্যবাদান্তে,':'বিনীত নিবেদক,'),'',...L.sign.filter(Boolean)].join('\n');
+ $('out').textContent=t;$('result').hidden=false;$('result').scrollIntoView({behavior:'smooth',block:'start'})});
+$('copy').onclick=async()=>{const b=$('copy');try{await navigator.clipboard.writeText($('out').textContent);b.textContent='কপি হয়েছে'}catch(e){const r=document.createRange();r.selectNodeContents($('out'));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='সিলেক্ট হয়েছে, কপি করুন'}setTimeout(()=>b.textContent='কপি করুন',2000)};
+$('print').onclick=()=>window.print();
+$('again').onclick=()=>{$('result').hidden=true;window.scrollTo({top:0,behavior:'smooth'})};
+$('theme').onclick=()=>{const n=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}};
+$('y').textContent=new Date().getFullYear();
+renderTypes();renderFields();
+</script>
+</body>
+</html>
