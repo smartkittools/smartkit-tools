@@ -159,6 +159,9 @@ function renderFields(){$('fields').innerHTML=T[cur].fields.map(f=>{
 document.querySelectorAll('#tones button').forEach(b=>b.onclick=()=>{modern=b.dataset.t==='modern';document.querySelectorAll('#tones button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));if(!$('result').hidden)$('f').requestSubmit()});
 $('f').addEventListener('submit',e=>{e.preventDefault();
  const f={};T[cur].fields.forEach(x=>f[x.id]=$('f_'+x.id).value.trim());
+ const nm=v=>v.replace(/[.\s]+$/,'').replace(/^([A-Z])([a-z])/,(m,a,b)=>a.toLowerCase()+b);
+ if(f.reason)f.reason=nm(f.reason);
+ if(cur==='tc'&&f.why)f.why=nm(f.why);
  if(cur==='leave'&&(!(+f.days>=1)||!f.start)){$('err').textContent='Please enter the number of days and the start date.';return}
  $('err').textContent='';
  const L=T[cur].make(f,modern);
