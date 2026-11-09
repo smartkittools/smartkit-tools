@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Application Letter Generator - Leave, Job, Admission | SmartKit Tool</title>
+<meta name="description" content="Write a leave application, job application, admission request or school transfer letter in seconds. Free, no sign-up, works on your phone.">
+<meta name="theme-color" content="#0d7c66">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230d7c66'/%3E%3Ctext x='16' y='22' font-size='17' font-weight='800' text-anchor='middle' fill='white' font-family='Arial'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<style>
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:8px 0 18px}
+.tile{background:var(--bg);color:var(--ink);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;min-height:48px;font:inherit;font-weight:600;cursor:pointer;text-align:left}
+.tile[aria-pressed=true]{border-color:var(--accent);background:var(--soft);color:var(--accent)}
+.seg{display:inline-flex;gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:4px;margin:6px 0 18px}
+.seg button{background:transparent;border:0;border-radius:9px;padding:9px 18px;min-height:40px;font:inherit;font-weight:600;color:var(--muted);cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+.grid label{grid-column:1/-1;display:grid;gap:5px;font-weight:600;font-size:15px}
+.grid label.half{grid-column:auto}
+input,select{font:inherit;font-weight:400;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 12px;width:100%;min-height:46px}
+input:focus,select:focus{outline:3px solid var(--accent);outline-offset:0;border-color:var(--accent)}
+.paper{background:#fffefb;color:#1c1a24;font:16px/1.8 Georgia,"Times New Roman",serif;border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:6px;padding:26px 22px;white-space:pre-wrap;word-break:break-word;margin:12px 0}
+.bt{display:flex;flex-wrap:wrap;gap:8px}
+#err{color:#b3261e;font-weight:600;min-height:22px;margin:10px 0 0}
+@media (max-width:520px){.grid label.half{grid-column:1/-1}}
+</style>
+<script>try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="index.html"><span class="mark">S</span>SmartKit Tool</a>
+  <nav><a href="index.html">Text tools</a><a href="about.html">About</a>
+    <button class="icon-btn" id="theme" aria-label="Switch light or dark theme">◐</button></nav>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>Write an application letter in seconds</h1>
+    <p class="lead">Pick a letter type, fill in a few details and copy a ready-to-send letter. Free, no sign-up, and your details stay on your device.</p>
+  </section>
+
+  <section class="bench"><div class="work">
+    <label class="lbl">1. Choose a letter type</label>
+    <div class="tiles" id="types" role="group" aria-label="Letter type"></div>
+    <label class="lbl">Writing style</label>
+    <div class="seg" id="tones" role="group" aria-label="Writing style">
+      <button type="button" data-t="modern" aria-pressed="true">Modern</button>
+      <button type="button" data-t="formal" aria-pressed="false">Formal</button>
+    </div>
+    <label class="lbl">2. Your details</label>
+    <form id="f" autocomplete="off">
+      <div class="grid" id="fields"></div>
+      <button class="btn" type="submit">Create letter</button>
+      <p id="err" role="status"></p>
+    </form>
+    <div id="result" hidden>
+      <label class="lbl">3. Your letter</label>
+      <div class="paper" id="out"></div>
+      <div class="bt">
+        <button class="btn" id="copy" type="button">Copy letter</button>
+        <button class="btn ghost" id="print" type="button">Print</button>
+        <button class="btn ghost" id="again" type="button">Edit details</button>
+      </div>
+      <p style="color:var(--muted);font-size:14px">Please read the letter once and check names, dates and details before sending.</p>
+    </div>
+  </div></section>
+
+  <section class="block faq">
+    <h2>Common questions</h2>
+    <details><summary>Is my information saved?</summary><p>No. The letter is created in your browser, so nothing you type is sent to us or stored.</p></details>
+    <details><summary>Can I use these letters in any country?</summary><p>Yes. The letters use a standard international format. Change the wording if your school or company asks for a specific layout.</p></details>
+    <details><summary>Is it free?</summary><p>Yes, completely free.</p></details>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <div>© <span id="y">2026</span> SmartKit Tool</div>
+  <div><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy Policy</a></div>
+</div></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const O={day:'numeric',month:'long',year:'numeric'};
+const fmtD=d=>d.toLocaleDateString('en-GB',O);
+const fmt=s=>fmtD(new Date(s+'T00:00:00'));
+const today=()=>new Date().toISOString().slice(0,10);
+const days=n=>n+(n>1?' days':' day');
+function range(s,n){const a=new Date(s+'T00:00:00');if(n<2)return 'on '+fmtD(a);const b=new Date(a);b.setDate(a.getDate()+n-1);return 'from '+fmtD(a)+' to '+fmtD(b)}
+const LD={id:'ldate',l:'Letter date',type:'date',def:'today'};
+const T={
+leave:{name:'Leave application',fields:[
+ {id:'who',l:'I am a',type:'select',opts:['Student','Employee']},
+ {id:'name',l:'Your name',ph:'e.g. Alex Morgan'},
+ {id:'role',l:'Class or job title',ph:'e.g. Class 8, Roll 12 / Sales Executive'},
+ {id:'org',l:'School or company name',ph:'e.g. Greenfield High School'},
+ {id:'addr',l:'Address',ph:'e.g. 12 Main Street, Springfield',opt:1},
+ {id:'reason',l:'Reason for leave',ph:'e.g. fever, a family function'},
+ {id:'days',l:'Number of days',type:'number',ph:'e.g. 2',half:1},
+ {id:'start',l:'First day of leave',type:'date',def:'today',half:1},LD],
+ make:(f,m)=>{const st=f.who==='Student',n=+f.days,r=range(f.start,n);return{
+  to:[st?'The Principal':'The Manager',f.org,f.addr],subject:'Application for leave',
+  body:m?[`I am writing to request ${n>1?n+' days of':'one day of'} leave ${r} due to ${f.reason}.`,
+   st?'I will catch up on any classes and assignments I miss as soon as I return.':'I will finish any urgent tasks before I leave and catch up on anything I miss as soon as I return.',
+   'I would be grateful if you could approve my request. Thank you for your time and understanding.']
+  :[`With due respect, I would like to request leave for ${days(n)} ${r}, as I will be unable to attend ${st?'school':'work'} due to ${f.reason}.`,
+   `I assure you that I will make up for any missed ${st?'lessons and assignments':'work'} upon my return.`,
+   'I therefore request you to kindly grant my leave for the stated period. I shall be very grateful.'],
+  sign:[f.name,f.role]}}},
+job:{name:'Job application',fields:[
+ {id:'name',l:'Your name',ph:'e.g. Sam Rivera'},
+ {id:'pos',l:'Position you are applying for',ph:'e.g. Customer Support Executive'},
+ {id:'org',l:'Company name',ph:'e.g. BrightPath Ltd'},
+ {id:'addr',l:'Company address',ph:'e.g. 5 Market Road, Dhaka',opt:1},
+ {id:'exp',l:'Your experience (one sentence)',ph:'e.g. I have two years of experience in customer support.',opt:1},
+ {id:'skills',l:'Key skills',ph:'e.g. communication, MS Excel, problem solving',opt:1},
+ {id:'why',l:'Why you want this job (one sentence)',ph:'e.g. I admire your focus on customer care.',opt:1},
+ {id:'contact',l:'Your email or phone',ph:'e.g. sam@example.com',opt:1},LD],
+ make:(f,m)=>{const mid=[f.exp,f.skills?'My key skills include '+f.skills+'.':'',f.why].filter(Boolean).join(' ');return{
+  to:['Hiring Manager',f.org,f.addr],subject:'Application for the position of '+f.pos,salute:'Dear Hiring Manager,',close:'Sincerely,',
+  body:[m?`I am writing to apply for the ${f.pos} position at ${f.org}.`:`I wish to apply for the position of ${f.pos} at ${f.org}.`,mid,
+   m?`I would welcome the opportunity to discuss how I can contribute to ${f.org}. Thank you for considering my application.`:'I would be glad to attend an interview at your convenience. Thank you for your time and consideration.'].filter(Boolean),
+  sign:[f.name,f.contact]}}},
+adm:{name:'Admission request',fields:[
+ {id:'name',l:'Student’s name',ph:'e.g. Maya Khan'},
+ {id:'guard',l:'Parent or guardian name (if a parent is writing)',ph:'e.g. Imran Khan',opt:1},
+ {id:'grade',l:'Class or grade applying for',ph:'e.g. Grade 6'},
+ {id:'org',l:'School name',ph:'e.g. Greenfield High School'},
+ {id:'addr',l:'School address',ph:'e.g. 12 Main Street, Springfield',opt:1},
+ {id:'prev',l:'Previous school',ph:'e.g. Sunrise Primary School',opt:1},
+ {id:'why',l:'Reason or extra detail (one sentence)',ph:'e.g. Our family has moved to this area.',opt:1},LD],
+ make:(f,m)=>{const g=!!f.guard,who=g?f.name:'I';return{
+  to:['The Principal',f.org,f.addr],subject:'Request for admission to '+f.grade,
+  body:[m?`I am writing to request admission ${g?'for '+f.name+' ':''}to ${f.grade} at ${f.org}.`:`With due respect, I would like to request admission ${g?'for '+f.name+' ':''}to ${f.grade} at ${f.org}.`,
+   [f.prev?`${who} previously studied at ${f.prev}.`:'',f.why].filter(Boolean).join(' '),
+   'I would be grateful if you could consider this request and let me know which documents or steps are needed. Thank you for your time.'].filter(Boolean),
+  sign:g?[f.guard,'Parent or guardian of '+f.name]:[f.name]}}},
+tc:{name:'School transfer request',fields:[
+ {id:'name',l:'Student’s name',ph:'e.g. Maya Khan'},
+ {id:'guard',l:'Parent or guardian name (if a parent is writing)',ph:'e.g. Imran Khan',opt:1},
+ {id:'cls',l:'Current class or grade',ph:'e.g. Grade 8, Roll 12'},
+ {id:'org',l:'School name',ph:'e.g. Greenfield High School'},
+ {id:'addr',l:'School address',ph:'e.g. 12 Main Street, Springfield',opt:1},
+ {id:'why',l:'Reason for transfer',ph:'e.g. our family is moving to another city'},LD],
+ make:(f,m)=>{const g=!!f.guard;return{
+  to:['The Principal',f.org,f.addr],subject:'Request for Transfer Certificate',
+  body:[m?`I am writing to request a Transfer Certificate ${g?'for '+f.name+', who is':'as I am'} currently studying in ${f.cls} at ${f.org}.`:`With due respect, I would like to request a Transfer Certificate ${g?'for '+f.name+', who is':'as I am'} currently studying in ${f.cls} at ${f.org}.`,
+   `The reason for the transfer is that ${f.why}.`,
+   'Please issue the certificate along with any other relevant documents, and let me know if any dues or formalities need to be completed. Thank you for your help.'],
+  sign:g?[f.guard,'Parent or guardian of '+f.name]:[f.name]}}}
+};
+let cur='leave',modern=true;
+function renderTypes(){const b=$('types');b.innerHTML='';Object.keys(T).forEach(k=>{const x=document.createElement('button');x.type='button';x.className='tile';x.textContent=T[k].name;x.setAttribute('aria-pressed',String(k===cur));x.onclick=()=>{cur=k;renderTypes();renderFields();$('result').hidden=true;$('err').textContent=''};b.appendChild(x)})}
+function renderFields(){$('fields').innerHTML=T[cur].fields.map(f=>{
+ const c=f.half?' class="half"':'',lb=f.l+(f.opt?' (optional)':'');
+ if(f.type==='select')return `<label${c}>${lb}<select id="f_${f.id}">${f.opts.map(o=>`<option>${o}</option>`).join('')}</select></label>`;
+ return `<label${c}>${lb}<input id="f_${f.id}"${f.opt?'':' required'}${f.type?` type="${f.type}"`:''}${f.type==='number'?' min="1" max="60" inputmode="numeric"':''}${f.ph?` placeholder="${f.ph}"`:''}></label>`}).join('');
+ T[cur].fields.forEach(f=>{if(f.def)$('f_'+f.id).value=today()})}
+document.querySelectorAll('#tones button').forEach(b=>b.onclick=()=>{modern=b.dataset.t==='modern';document.querySelectorAll('#tones button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));if(!$('result').hidden)$('f').requestSubmit()});
+$('f').addEventListener('submit',e=>{e.preventDefault();
+ const f={};T[cur].fields.forEach(x=>f[x.id]=$('f_'+x.id).value.trim());
+ if(cur==='leave'&&(!(+f.days>=1)||!f.start)){$('err').textContent='Please enter the number of days and the start date.';return}
+ $('err').textContent='';
+ const L=T[cur].make(f,modern);
+ const t=[fmt(f.ldate),'','To,',...L.to.filter(Boolean),'','Subject: '+L.subject,'',L.salute||'Dear Sir or Madam,','',L.body.join('\n\n'),'',L.close||(modern?'Sincerely,':'Yours faithfully,'),'',...L.sign.filter(Boolean)].join('\n');
+ $('out').textContent=t;$('result').hidden=false;$('result').scrollIntoView({behavior:'smooth',block:'start'})});
+$('copy').onclick=async()=>{const b=$('copy');try{await navigator.clipboard.writeText($('out').textContent);b.textContent='Copied'}catch(e){const r=document.createRange();r.selectNodeContents($('out'));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected, press Copy'}setTimeout(()=>b.textContent='Copy letter',2000)};
+$('print').onclick=()=>window.print();
+$('again').onclick=()=>{$('result').hidden=true;window.scrollTo({top:0,behavior:'smooth'})};
+$('theme').onclick=()=>{const n=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}};
+$('y').textContent=new Date().getFullYear();
+renderTypes();renderFields();
+</script>
+</body>
+</html>
