@@ -3,16 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SmartKit Tool - Free Online Text Tools</title>
-<meta name="description" content="Free online text tools: word counter, character counter, case converter, duplicate line remover and extra space remover. No sign-up, works in your browser.">
+<title>SmartKit Tool - Free Online Text, PDF and Image Tools</title>
+<meta name="description" content="Free online tools: word counter, JPG to PDF, image compressor, case converter and application letter generator. No sign-up, works in your browser.">
 <meta name="google-site-verification" content="afzl41jwuCwU8pF2AGQ-f0TSA4lmBNXhtayXgcIqO7I" />
 <meta name="google-site-verification" content="jnPfN4NaYyRkZAIhzApnzC7J-E5StlYzplkiLgdzuBk" />
 <meta name="theme-color" content="#0d7c66">
-<meta property="og:title" content="SmartKit Tool - Free Online Text Tools">
-<meta property="og:description" content="Count words, change text case and clean up text instantly. Free and private.">
+<meta property="og:title" content="SmartKit Tool - Free Online Text, PDF and Image Tools">
+<meta property="og:description" content="Count words, convert JPG to PDF and compress photos. Free and private.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230d7c66'/%3E%3Ctext x='16' y='22' font-size='17' font-weight='800' text-anchor='middle' fill='white' font-family='Arial'%3ES%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="theme.css">
 <script>try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
@@ -26,12 +27,53 @@
 
 <main class="wrap">
   <section class="hero">
-    <h1>Clean, count and <em>convert text</em> in seconds</h1>
-    <p class="lead">Free text tools that run in your browser. Nothing you type is uploaded or saved.</p>
+    <h1>Free online tools for <em>text, PDF and images</em></h1>
+    <p class="lead">Count words, turn photos into a PDF, shrink an image to the size a form asks for, and write applications in English or বাংলা. Everything runs in your browser.</p>
     <ul class="pills"><li>Free</li><li>No sign-up</li><li>Private, runs in your browser</li></ul>
+    <div class="do" aria-label="What you can do">
+      <a href="jpg-to-pdf.html" data-cat="pdf"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M12 11v6M9.5 14.5L12 17l2.5-2.5"/></svg></span><span>JPG to PDF<small>Turn photos into one PDF</small></span></a>
+      <a href="image-compressor.html" data-cat="img"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/><path d="M9 12h6"/></svg></span><span>Compress image<small>Reduce to 50 or 100 KB</small></span></a>
+      <a href="#tools" data-cat="text"><span class="ic">Aa</span><span>Text tools<small>Count, convert and clean text</small></span></a>
+      <a href="application-letter.html" data-cat="doc"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg></span><span>Application letters<small>English and বাংলা দরখাস্ত</small></span></a>
+    </div>
   </section>
 
-  <section class="bench" id="tools" aria-label="Text tools">
+  <section class="block" id="all-tools">
+    <h2>All tools</h2>
+    <div class="cat" data-cat="text">
+      <h3 class="ct">Text tools</h3>
+      <div class="cards sm">
+        <a class="card sm" data-cat="text" data-open="words" href="#tools"><div class="ic">123</div><h3>Word Counter</h3><p>Words, characters and reading time.</p></a>
+        <a class="card sm" data-cat="text" data-open="chars" href="#tools"><div class="ic">Ab</div><h3>Character Counter</h3><p>With and without spaces.</p></a>
+        <a class="card sm" data-cat="text" data-open="case" href="#tools"><div class="ic">Aa</div><h3>Case Converter</h3><p>UPPER, lower, Title and Sentence case.</p></a>
+        <a class="card sm" data-cat="text" data-open="dupes" href="#tools"><div class="ic">≡</div><h3>Remove Duplicate Lines</h3><p>Keep one of each repeated line.</p></a>
+        <a class="card sm" data-cat="text" data-open="spaces" href="#tools"><div class="ic">↔</div><h3>Extra Space Remover</h3><p>Clean up spaces and empty lines.</p></a>
+      </div>
+    </div>
+    <div class="cat" data-cat="pdf">
+      <h3 class="ct">PDF tools</h3>
+      <div class="cards">
+        <a class="card" data-cat="pdf" href="jpg-to-pdf.html"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M12 11v6M9.5 14.5L12 17l2.5-2.5"/></svg></div><h3>JPG to PDF</h3><p>Combine photos into one PDF, right in your browser.</p></a>
+      </div>
+    </div>
+    <div class="cat" data-cat="img">
+      <h3 class="ct">Image tools</h3>
+      <div class="cards">
+        <a class="card" data-cat="img" href="image-compressor.html"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/><path d="M9 12h6"/></svg></div><h3>Image Compressor</h3><p>Reduce a photo to 50 KB, 100 KB or any size you need.</p></a>
+      </div>
+    </div>
+    <div class="cat" data-cat="doc">
+      <h3 class="ct">Applications and letters</h3>
+      <div class="cards">
+        <a class="card" data-cat="doc" href="application-letter.html"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg></div><h3>Application Letter Generator</h3><p>Leave, job, admission and school transfer letters in English, ready to copy.</p></a>
+        <a class="card" data-cat="doc" href="dorkhast.html"><div class="ic">অ</div><h3>বাংলা দরখাস্ত লিখুন</h3><p>ছুটি, চাকরি, ভর্তি ও ছাড়পত্রের দরখাস্ত বাংলায় লিখুন।</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Try the text tools</h2>
+    <section class="bench" id="tools" aria-label="Text tools">
     <div class="tabs" role="tablist" aria-label="Choose a tool">
       <button class="tab" role="tab" data-tool="words">Word Counter</button>
       <button class="tab" role="tab" data-tool="chars">Character Counter</button>
@@ -79,26 +121,18 @@
       </div>
     </div>
   </section>
-
-  <section class="block">
-    <h2>All tools</h2>
-    <div class="cards">
-      <a class="card" href="#tools"><div class="ic">Aa</div><h3>Text tools</h3><p>Word counter, character counter, case converter, duplicate line remover and space cleaner.</p></a>
-      <a class="card" href="application-letter.html"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg></div><h3>Application Letter Generator</h3><p>Leave, job, admission and school transfer letters in English, ready to copy.</p></a>
-      <a class="card" href="dorkhast.html"><div class="ic">অ</div><h3>বাংলা দরখাস্ত লিখুন</h3><p>ছুটি, চাকরি, ভর্তি ও ছাড়পত্রের দরখাস্ত বাংলায় লিখুন।</p></a>
-      <a class="card" href="jpg-to-pdf.html"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M4 17l5-4 4 3 3-2 4 3"/></svg></div><h3>JPG to PDF</h3><p>Combine photos into one PDF, right in your browser.</p></a>
-      <a class="card" href="image-compressor.html"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/><path d="M9 12h6"/></svg></div><h3>Image Compressor</h3><p>Reduce a photo to 50 KB, 100 KB or any size you need.</p></a>
-    </div>
   </section>
+
+  
 
   <section class="block" id="about">
     <h2>Free tools, no sign-up</h2>
-    <p class="lead">SmartKit Tool is a growing set of simple utilities for everyday work. Writers, students and office workers use them to check length limits, tidy copied text and fix capitalization. More tools are added regularly.</p>
+    <p class="lead">SmartKit Tool is a growing set of simple utilities for everyday work. Students, job seekers and office workers use them to check length limits, make PDFs from photos, resize images for online forms and tidy copied text. More tools are added regularly.</p>
   </section>
 
   <section class="block faq" id="faq">
     <h2>Common questions</h2>
-    <details><summary>Is my text saved or sent anywhere?</summary><p>No. Every tool runs inside your browser, so your text never leaves your device.</p></details>
+    <details><summary>Are my text and files saved or sent anywhere?</summary><p>No. Every tool runs inside your browser, so your text, photos and PDFs never leave your device.</p></details>
     <details><summary>Do the tools work with Bangla text?</summary><p>Yes. Word, character and line counts work with Bangla and other languages. Case conversion applies only to scripts that have upper and lower case, such as English.</p></details>
     <details><summary>How are words counted?</summary><p>Any group of characters separated by spaces or line breaks counts as one word. Reading time assumes about 200 words per minute.</p></details>
     <details><summary>Is it free?</summary><p>Yes, every tool is free to use.</p></details>
@@ -179,7 +213,8 @@ $('#theme').addEventListener('click',()=>{
   try{localStorage.setItem('theme',n)}catch(e){}
 });
 $('#y').textContent=new Date().getFullYear();
+$$('[data-open]').forEach(a=>a.addEventListener('click',()=>setTool(a.dataset.open)));
 setTool('words');stats();
 </script>
 </body>
-        </html>
+</html>
