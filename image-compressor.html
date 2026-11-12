@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compress Image to 50KB, 100KB or Any Size - Free | SmartKit Tool</title>
+<meta name="description" content="Reduce a photo or signature to 20KB, 50KB, 100KB or any size you choose. Free, private, runs in your browser.">
+<meta name="theme-color" content="#0d7c66">
+<meta property="og:title" content="Compress Image to 50KB, 100KB or Any Size - Free | SmartKit Tool">
+<meta property="og:description" content="Reduce a photo or signature to 20KB, 50KB, 100KB or any size you choose. Free, private, runs in your browser.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230d7c66'/%3E%3Ctext x='16' y='22' font-size='17' font-weight='800' text-anchor='middle' fill='white' font-family='Arial'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<style>
+.drop{display:block;position:relative;border:2px dashed var(--line);border-radius:16px;padding:30px 16px;text-align:center;cursor:pointer;background:var(--bg);transition:border-color .15s,background .15s}
+.drop:hover,.drop.over{border-color:var(--accent);background:var(--soft)}
+.drop strong{display:block;font-size:18px}
+.drop small{color:var(--muted)}
+.drop input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.drop:focus-within{outline:3px solid var(--accent);outline-offset:2px}
+.files{list-style:none;margin:0;padding:0}
+.files li{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+.thumb{width:52px;height:52px;border-radius:10px;object-fit:cover;background:var(--bg);flex:none}
+.meta{flex:1;min-width:0}
+.meta b{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meta span{font-size:13px;color:var(--muted)}
+.acts{display:flex;gap:4px;flex:none}
+.acts .icon-btn{margin:0;width:40px;height:40px}
+.acts .icon-btn:disabled{opacity:.35;cursor:default}
+.acts .del{color:#b3261e}
+.btn:disabled{opacity:.5;cursor:default;transform:none;box-shadow:none}
+a.btn{display:inline-grid;place-items:center;text-decoration:none}
+.picked{margin:12px 0 0;font-size:14px;color:var(--muted)}
+.result{margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
+.result img{display:block;max-width:100%;max-height:320px;margin:0 auto 14px;border-radius:12px;border:1px solid var(--line)}
+.gap{margin-top:18px}
+</style>
+<script>try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="index.html"><span class="mark">S</span>SmartKit Tool</a>
+  <nav>
+    <a href="index.html#faq">FAQ</a><a href="about.html">About</a>
+    <button class="icon-btn" id="theme" aria-label="Switch light or dark theme">◐</button>
+  </nav>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>Compress <em>image to 50 KB, 100 KB</em> or any size</h1>
+    <p class="lead">Set the file size you need and get a smaller photo in seconds. Your image never leaves your device.</p>
+    <p class="lead" style="font-size:15px;margin-top:6px">ছবির সাইজ KB-তে কমান। চাকরির আবেদন, ফর্ম ও সিগনেচারের জন্য কাজে লাগবে।</p>
+    <ul class="pills"><li>Free</li><li>No sign-up</li><li>Private, runs in your browser</li></ul>
+  </section>
+
+  <section class="bench" aria-label="Image compressor">
+    <div class="work">
+      <label class="drop" id="drop">
+        <input type="file" id="picker" accept="image/*">
+        <strong>Choose an image</strong>
+        <small>JPG, PNG or WebP. ছবি বাছাই করুন।</small>
+      </label>
+      <p class="picked" id="picked"></p>
+
+      <p class="hint" style="margin:18px 0 0;font-weight:700">Target size</p>
+      <div class="tiles" id="tiles"></div>
+      <div class="grid">
+        <label for="kb">Or type a size in KB
+          <input type="number" id="kb" min="5" max="5000" value="100" inputmode="numeric">
+        </label>
+      </div>
+
+      <p id="message" role="status"></p>
+      <p id="err" role="alert"></p>
+
+      <div class="row end">
+        <button class="btn" id="go" disabled>Compress image</button>
+      </div>
+
+      <div class="result" id="result" hidden>
+        <img id="out" alt="Compressed image preview">
+        <div class="stats">
+          <div class="stat"><b id="sBefore">0</b><span>Original</span></div>
+          <div class="stat hl"><b id="sAfter">0</b><span>Compressed</span></div>
+          <div class="stat"><b id="sSaved">0%</b><span>Smaller</span></div>
+        </div>
+        <a class="btn" id="dl" download="compressed.jpg" href="#">Download image</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>How to reduce image size in KB</h2>
+    <ol class="lead">
+      <li>Choose your photo or signature image.</li>
+      <li>Tap 50, 100 or 200 KB, or type the size you need.</li>
+      <li>Select Compress image, then download the result.</li>
+    </ol>
+  </section>
+
+  <section class="block faq" id="faq">
+    <h2>Common questions</h2>
+    <details><summary>Is my image uploaded anywhere?</summary><p>No. The image is compressed inside your browser and stays on your device.</p></details>
+    <details><summary>চাকরির আবেদনের ছবি ১০০ KB-এর নিচে কীভাবে আনব?</summary><p>ছবি বাছাই করে 100 KB বোতামে চাপুন, তারপর Compress image চাপুন। টুলটি মান ঠিক রেখে যতটা সম্ভব ছোট করে দেবে।</p></details>
+    <details><summary>What if the size cannot be reached?</summary><p>Very small targets may need a smaller picture. The tool lowers quality first, then shrinks the dimensions step by step until it fits.</p></details>
+    <details><summary>What happens to transparent PNG images?</summary><p>The result is a JPG, so transparent areas become white.</p></details>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <div>© <span id="y">2026</span> SmartKit Tool</div>
+  <div><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy Policy</a></div>
+</div></footer>
+
+<script>
+(function(){
+  document.getElementById('theme').addEventListener('click',function(){
+    var n=document.documentElement.dataset.theme==='dark'?'light':'dark';
+    document.documentElement.dataset.theme=n;
+    try{localStorage.setItem('theme',n)}catch(e){}
+  });
+  document.getElementById('y').textContent=new Date().getFullYear();
+
+  var $=function(id){return document.getElementById(id)};
+  var picker=$('picker'),drop=$('drop'),go=$('go'),kb=$('kb'),msg=$('message'),errEl=$('err'),
+      result=$('result'),out=$('out'),dl=$('dl'),picked=$('picked'),tiles=$('tiles');
+  var file=null,outUrl=null;
+
+  function setStatus(m,isErr){msg.textContent=isErr?'':(m||'');errEl.textContent=isErr?(m||''):''}
+  function fmt(b){return b<1048576?Math.max(1,Math.round(b/1024))+' KB':(b/1048576).toFixed(2)+' MB'}
+
+  function sync(){Array.prototype.forEach.call(tiles.children,function(c){c.setAttribute('aria-pressed',parseInt(c.dataset.v,10)===parseInt(kb.value,10))})}
+  [20,50,100,200,500].forEach(function(v){
+    var c=document.createElement('button');
+    c.type='button';c.className='tile';c.dataset.v=v;c.textContent=v+' KB';
+    c.onclick=function(){kb.value=v;sync()};
+    tiles.appendChild(c);
+  });
+  kb.oninput=sync;sync();
+
+  function setFile(f){
+    if(!f||f.type.indexOf('image/')!==0){setStatus('Please choose an image file.',true);return}
+    file=f;go.disabled=false;result.hidden=true;
+    picked.textContent=f.name+' ('+fmt(f.size)+')';setStatus('');
+  }
+  picker.onchange=function(){setFile(picker.files[0])};
+  ['dragenter','dragover'].forEach(function(e){drop.addEventListener(e,function(ev){ev.preventDefault();drop.classList.add('over')})});
+  ['dragleave','drop'].forEach(function(e){drop.addEventListener(e,function(ev){ev.preventDefault();drop.classList.remove('over')})});
+  drop.addEventListener('drop',function(e){if(e.dataTransfer)setFile(e.dataTransfer.files[0])});
+
+  function loadImage(url){return new Promise(function(res,rej){var im=new Image();im.onload=function(){res(im)};im.onerror=rej;im.src=url})}
+  function blobAt(im,w,h,q){
+    return new Promise(function(res){
+      var cv=document.createElement('canvas');cv.width=w;cv.height=h;
+      var cx=cv.getContext('2d');cx.fillStyle='#fff';cx.fillRect(0,0,w,h);cx.drawImage(im,0,0,w,h);
+      cv.toBlob(function(b){cv.width=cv.height=0;res(b)},'image/jpeg',q);
+    });
+  }
+
+  go.onclick=async function(){
+    var target=(parseFloat(kb.value)||0)*1024;
+    if(target<5120){setStatus('Enter a size of at least 5 KB.',true);return}
+    go.disabled=true;result.hidden=true;setStatus('Compressing\u2026');
+    var srcUrl=URL.createObjectURL(file),best=null,last=null;
+    try{
+      var im=await loadImage(srcUrl),w0=im.naturalWidth,h0=im.naturalHeight,scale=Math.min(1,2400/Math.max(w0,h0));
+      for(var n=0;n<14&&!best;n++){
+        var w=Math.max(1,Math.round(w0*scale)),h=Math.max(1,Math.round(h0*scale));
+        var hi=await blobAt(im,w,h,0.95);last=hi;
+        if(hi.size<=target){best=hi;break}
+        var lo=await blobAt(im,w,h,0.3);last=lo;
+        if(lo.size<=target){
+          var a=0.3,b=0.95;best=lo;
+          for(var i=0;i<7;i++){var m=(a+b)/2,bm=await blobAt(im,w,h,m);if(bm.size<=target){best=bm;a=m}else{b=m}}
+        }else{
+          if(Math.max(w,h)<160)break;
+          scale*=0.85;await new Promise(function(r){setTimeout(r,0)});
+        }
+      }
+      var fin=best||last;
+      if(outUrl)URL.revokeObjectURL(outUrl);
+      outUrl=URL.createObjectURL(fin);out.src=outUrl;dl.href=outUrl;
+      dl.download=file.name.replace(/\.[^.]+$/,'')+'-'+Math.round(fin.size/1024)+'kb.jpg';
+      $('sBefore').textContent=fmt(file.size);$('sAfter').textContent=fmt(fin.size);
+      $('sSaved').textContent=Math.max(0,Math.round((1-fin.size/file.size)*100))+'%';
+      result.hidden=false;
+      if(best)setStatus('Done.',false);else setStatus('Could not reach '+fmt(target)+'. This is the smallest result possible.',true);
+    }catch(e){setStatus('This image could not be read. Try a JPG or PNG file.',true)}
+    URL.revokeObjectURL(srcUrl);go.disabled=false;
+  };
+})();
+</script>
+</body>
+</html>

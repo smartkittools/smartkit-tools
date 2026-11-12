@@ -3,377 +3,212 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JPG to PDF Converter – Free, No Upload | SmartKit Tool</title>
+<title>JPG to PDF Converter - Free, No Upload | SmartKit Tool</title>
 <meta name="description" content="Convert JPG, PNG and WebP photos to one PDF for free. Reorder pages, choose A4 or Letter. Your files never leave your device.">
+<meta name="theme-color" content="#0d7c66">
+<meta property="og:title" content="JPG to PDF Converter - Free, No Upload | SmartKit Tool">
+<meta property="og:description" content="Convert JPG, PNG and WebP photos to one PDF for free. Reorder pages, choose A4 or Letter. Your files never leave your device.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230d7c66'/%3E%3Ctext x='16' y='22' font-size='17' font-weight='800' text-anchor='middle' fill='white' font-family='Arial'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
 <style>
-:root{
-  --bg:#F4F7F6; --surface:#fff; --ink:#14201C; --muted:#5B6B66; --line:#E1E9E6;
-  --accent:#0E7C66; --accent-2:#13A084; --accent-ink:#fff; --accent-soft:#E6F3EE; --danger:#B3261E;
-  --shadow:0 1px 2px rgba(16,40,32,.05),0 8px 24px rgba(16,40,32,.06);
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --bg:#0D1513; --surface:#15201D; --ink:#E8F0ED; --muted:#94A69F; --line:#26352F;
-    --accent:#3DB894; --accent-2:#3DB894; --accent-ink:#06241C; --accent-soft:#17302A; --danger:#F2B8B5;
-    --shadow:none;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#0D1513; --surface:#15201D; --ink:#E8F0ED; --muted:#94A69F; --line:#26352F;
-  --accent:#3DB894; --accent-2:#3DB894; --accent-ink:#06241C; --accent-soft:#17302A; --danger:#F2B8B5;
-  --shadow:none;
-}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;color:var(--ink);line-height:1.6;
-  font:16px/1.6 Inter,Roboto,"Segoe UI","Noto Sans Bengali","Hind Siliguri",system-ui,sans-serif;
-  background:linear-gradient(180deg,var(--accent-soft) 0,var(--bg) 360px) var(--bg);min-height:100vh}
-a{color:var(--accent)}
-:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.wrap{max-width:760px;margin:0 auto;padding:0 20px}
-
-/* header */
-header.site{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);
-  backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
-.logo{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:#fff;font-weight:700;
-  background:linear-gradient(135deg,var(--accent-2),var(--accent));box-shadow:0 4px 12px rgba(14,124,102,.3)}
-nav{display:flex;align-items:center;gap:18px;font-size:15px}
-nav a{color:var(--muted);text-decoration:none;font-weight:500}
-nav a:hover{color:var(--ink)}
-#theme{width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;font-size:15px}
-
-/* hero */
-h1{font-size:clamp(30px,8vw,44px);line-height:1.12;letter-spacing:-.03em;margin:36px 0 12px;font-weight:800}
-h1 em{font-style:normal;color:var(--accent)}
-.lead{margin:0;color:var(--muted);font-size:18px}
-.lead-bn{margin:6px 0 0;color:var(--muted);font-size:15px}
-.pills{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
-.pills li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:14px;font-weight:600;color:var(--accent)}
-
-/* tool card */
-.tool{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:20px;margin:26px 0 0;box-shadow:var(--shadow)}
-.drop{display:block;border:2px dashed var(--line);border-radius:16px;padding:30px 16px;text-align:center;cursor:pointer;
-  background:var(--bg);transition:border-color .15s,background .15s;position:relative}
-.drop:hover,.drop.over{border-color:var(--accent);background:var(--accent-soft)}
+.drop{display:block;position:relative;border:2px dashed var(--line);border-radius:16px;padding:30px 16px;text-align:center;cursor:pointer;background:var(--bg);transition:border-color .15s,background .15s}
+.drop:hover,.drop.over{border-color:var(--accent);background:var(--soft)}
 .drop strong{display:block;font-size:18px}
 .drop small{color:var(--muted)}
 .drop input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
 .drop:focus-within{outline:3px solid var(--accent);outline-offset:2px}
-.opts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
-.opts label{display:flex;flex-direction:column;font-size:14px;font-weight:600;gap:6px}
-select{font:inherit;font-weight:400;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px;min-height:46px}
-ul.files{list-style:none;margin:0;padding:0}
-ul.files li{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+.files{list-style:none;margin:0;padding:0}
+.files li{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
 .thumb{width:52px;height:52px;border-radius:10px;object-fit:cover;background:var(--bg);flex:none}
 .meta{flex:1;min-width:0}
-.meta b{display:block;font-weight:600;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meta b{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .meta span{font-size:13px;color:var(--muted)}
-.row-actions{display:flex;gap:4px;flex:none}
-.icon{min-width:40px;min-height:40px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;font-size:16px;cursor:pointer}
-.icon:hover:not(:disabled){border-color:var(--accent)}
-.icon:disabled{opacity:.35;cursor:default}
-.icon.del{color:var(--danger)}
-.bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
-.btn{font:inherit;font-weight:600;min-height:48px;padding:0 24px;border-radius:12px;border:1px solid var(--accent);
-  background:var(--accent);color:var(--accent-ink);cursor:pointer;flex:1 1 200px;box-shadow:0 6px 16px rgba(14,124,102,.25)}
-.btn:disabled{opacity:.5;cursor:default;box-shadow:none}
-.btn.ghost{background:var(--surface);color:var(--ink);border-color:var(--line);flex:0 1 auto;box-shadow:none}
-#status{margin:12px 0 0;font-size:14px;color:var(--muted);min-height:1.4em}
-#status.err{color:var(--danger)}
-.hidden{display:none}
-
-/* content */
-section.block{margin:44px 0 0}
-section.block h2{font-size:26px;letter-spacing:-.02em;margin:0 0 12px}
-section.block p,section.block li{color:var(--muted);font-size:17px}
-section.block ol{padding-left:22px;margin:0}
-details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin:10px 0;box-shadow:var(--shadow)}
-summary{cursor:pointer;font-weight:600;padding:16px 18px;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";color:var(--accent);font-size:22px;font-weight:600;line-height:1}
-details[open] summary::after{content:"\2212"}
-details p{margin:0;padding:0 18px 16px;font-size:16px}
-
-footer{margin-top:56px;border-top:1px solid var(--line);padding:20px 0 28px;font-size:14px;color:var(--muted)}
-footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
-footer nav{gap:16px;font-size:14px}
-@media (max-width:420px){.opts{grid-template-columns:1fr}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.acts{display:flex;gap:4px;flex:none}
+.acts .icon-btn{margin:0;width:40px;height:40px}
+.acts .icon-btn:disabled{opacity:.35;cursor:default}
+.acts .del{color:#b3261e}
+.btn:disabled{opacity:.5;cursor:default;transform:none;box-shadow:none}
+a.btn{display:inline-grid;place-items:center;text-decoration:none}
+.picked{margin:12px 0 0;font-size:14px;color:var(--muted)}
+.result{margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
+.result img{display:block;max-width:100%;max-height:320px;margin:0 auto 14px;border-radius:12px;border:1px solid var(--line)}
+.gap{margin-top:18px}
 </style>
+<script>try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
-
-<header class="site">
-  <div class="wrap">
-    <a class="brand" href="/"><span class="logo">S</span>SmartKit Tool</a>
-    <nav aria-label="Main">
-      <a href="/#faq">FAQ</a>
-      <a href="/about.html">About</a>
-      <button id="theme" type="button" aria-label="Switch light or dark theme">&#9680;</button>
-    </nav>
-  </div>
-</header>
+<header><div class="wrap">
+  <a class="logo" href="index.html"><span class="mark">S</span>SmartKit Tool</a>
+  <nav>
+    <a href="index.html#faq">FAQ</a><a href="about.html">About</a>
+    <button class="icon-btn" id="theme" aria-label="Switch light or dark theme">◐</button>
+  </nav>
+</div></header>
 
 <main class="wrap">
-  <h1>Convert <em>JPG to PDF</em> in seconds</h1>
-  <p class="lead">Combine photos into one PDF. Your files stay on your device and are never uploaded.</p>
-  <p class="lead-bn">ছবি থেকে PDF বানান। ফাইল আপনার ফোনেই থাকে, কোথাও আপলোড হয় না।</p>
-  <ul class="pills">
-    <li>&#10003; Free</li>
-    <li>&#10003; No sign-up</li>
-    <li>&#10003; Private, runs in your browser</li>
-  </ul>
+  <section class="hero">
+    <h1>Convert <em>JPG to PDF</em> in seconds</h1>
+    <p class="lead">Combine photos into one PDF. Your files stay on your device and are never uploaded.</p>
+    <p class="lead" style="font-size:15px;margin-top:6px">ছবি থেকে PDF বানান। ফাইল আপনার ফোনেই থাকে, কোথাও আপলোড হয় না।</p>
+    <ul class="pills"><li>Free</li><li>No sign-up</li><li>Private, runs in your browser</li></ul>
+  </section>
 
-  <section class="tool" aria-label="JPG to PDF tool">
-    <label class="drop" id="drop">
-      <input type="file" id="picker" accept="image/*" multiple>
-      <strong>Choose images</strong>
-      <small>JPG, PNG or WebP. Tap here or drop files. ছবি বাছাই করুন।</small>
-    </label>
+  <section class="bench" aria-label="JPG to PDF tool">
+    <div class="work">
+      <label class="drop" id="drop">
+        <input type="file" id="picker" accept="image/*" multiple>
+        <strong>Choose images</strong>
+        <small>JPG, PNG or WebP. Tap here or drop files. ছবি বাছাই করুন।</small>
+      </label>
 
-    <div class="opts">
-      <label>Page size
-        <select id="size">
-          <option value="a4">A4</option>
-          <option value="letter">Letter</option>
-          <option value="fit">Same as image</option>
-        </select>
-      </label>
-      <label id="orientWrap">Orientation
-        <select id="orient">
-          <option value="auto">Auto</option>
-          <option value="p">Portrait</option>
-          <option value="l">Landscape</option>
-        </select>
-      </label>
-      <label>Margin
-        <select id="margin">
-          <option value="0">None</option>
-          <option value="20" selected>Small</option>
-          <option value="40">Large</option>
-        </select>
-      </label>
-      <label>Quality
-        <select id="quality">
-          <option value="0.92">High</option>
-          <option value="0.75" selected>Medium (smaller file)</option>
-          <option value="0.55">Low (smallest file)</option>
-        </select>
-      </label>
+      <div class="grid gap">
+        <label class="half">Page size
+          <select id="size"><option value="a4">A4</option><option value="letter">Letter</option><option value="fit">Same as image</option></select>
+        </label>
+        <label class="half" id="orientWrap">Orientation
+          <select id="orient"><option value="auto">Auto</option><option value="p">Portrait</option><option value="l">Landscape</option></select>
+        </label>
+        <label class="half">Margin
+          <select id="margin"><option value="0">None</option><option value="20" selected>Small</option><option value="40">Large</option></select>
+        </label>
+        <label class="half">Quality
+          <select id="quality"><option value="0.92">High</option><option value="0.75" selected>Medium (smaller file)</option><option value="0.55">Low (smallest file)</option></select>
+        </label>
+      </div>
+
+      <ul class="files" id="list"></ul>
+      <p id="message" role="status"></p>
+      <p id="err" role="alert"></p>
+
+      <div class="row end">
+        <button class="btn" id="make" disabled>Create PDF</button>
+        <button class="btn ghost" id="clear" type="button" hidden>Clear all</button>
+      </div>
     </div>
-
-    <ul class="files" id="list"></ul>
-
-    <div class="bar">
-      <button class="btn" id="make" disabled>Create PDF</button>
-      <button class="btn ghost hidden" id="clear" type="button">Clear all</button>
-    </div>
-    <p id="status" role="status" aria-live="polite"></p>
   </section>
 
   <section class="block">
     <h2>How to convert JPG to PDF</h2>
-    <ol>
+    <ol class="lead">
       <li>Choose one or more images from your phone or computer.</li>
       <li>Use the arrow buttons to put the pages in order.</li>
       <li>Pick a page size and select Create PDF. The file downloads right away.</li>
     </ol>
   </section>
 
-  <section class="block" id="faq">
+  <section class="block faq" id="faq">
     <h2>Common questions</h2>
-    <details>
-      <summary>Are my images uploaded anywhere?</summary>
-      <p>No. The PDF is built inside your browser. Your photos stay on your device.</p>
-    </details>
-    <details>
-      <summary>How many images can I combine?</summary>
-      <p>There is no fixed limit. On a phone, 20 to 30 photos at a time works best. Use Medium or Low quality for very large photos.</p>
-    </details>
-    <details>
-      <summary>Can I use PNG or WebP images?</summary>
-      <p>Yes. Every image is converted to a PDF page, whatever its format.</p>
-    </details>
-    <details>
-      <summary>চাকরির আবেদনের জন্য কোন সাইজ বেছে নেব?</summary>
-      <p>A4 বেছে নিন এবং Quality Medium রাখুন। এতে ফাইলের সাইজ কম থাকে আর প্রিন্টেও ভালো দেখায়।</p>
-    </details>
+    <details><summary>Are my images uploaded anywhere?</summary><p>No. The PDF is built inside your browser. Your photos stay on your device.</p></details>
+    <details><summary>How many images can I combine?</summary><p>There is no fixed limit. On a phone, 20 to 30 photos at a time works best. Use Medium or Low quality for very large photos.</p></details>
+    <details><summary>Can I use PNG or WebP images?</summary><p>Yes. Every image is converted to a PDF page, whatever its format.</p></details>
+    <details><summary>চাকরির আবেদনের জন্য কোন সাইজ বেছে নেব?</summary><p>A4 বেছে নিন এবং Quality Medium রাখুন। এতে ফাইলের সাইজ কম থাকে আর প্রিন্টেও ভালো দেখায়।</p></details>
   </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <span>&copy; 2026 SmartKit Tool</span>
-    <nav aria-label="Footer">
-      <a href="/about.html">About</a>
-      <a href="/contact.html">Contact</a>
-      <a href="/privacy.html">Privacy Policy</a>
-    </nav>
-  </div>
-</footer>
+<footer><div class="wrap">
+  <div>© <span id="y">2026</span> SmartKit Tool</div>
+  <div><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy Policy</a></div>
+</div></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
 (function(){
-  // theme toggle
-  var root = document.documentElement;
-  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
-  document.getElementById('theme').onclick = function(){
-    var dark = root.getAttribute('data-theme') === 'dark' ||
-      (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    var next = dark ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch(e){}
-  };
+  document.getElementById('theme').addEventListener('click',function(){
+    var n=document.documentElement.dataset.theme==='dark'?'light':'dark';
+    document.documentElement.dataset.theme=n;
+    try{localStorage.setItem('theme',n)}catch(e){}
+  });
+  document.getElementById('y').textContent=new Date().getFullYear();
 
-  var files = [];
-  var nextId = 1;
-  var $ = function(id){ return document.getElementById(id); };
-  var picker=$('picker'), drop=$('drop'), list=$('list'), make=$('make'), clearBtn=$('clear'),
-      statusEl=$('status'), sizeSel=$('size'), orientWrap=$('orientWrap');
+  var files=[],nextId=1;
+  var $=function(id){return document.getElementById(id)};
+  var picker=$('picker'),drop=$('drop'),list=$('list'),make=$('make'),clearBtn=$('clear'),
+      msg=$('message'),errEl=$('err'),sizeSel=$('size'),orientWrap=$('orientWrap');
 
-  function setStatus(msg, isErr){ statusEl.textContent = msg || ''; statusEl.className = isErr ? 'err' : ''; }
-  function fmtSize(b){
-    if (b < 1024*1024) return Math.max(1, Math.round(b/1024)) + ' KB';
-    return (b/1024/1024).toFixed(1) + ' MB';
-  }
+  function setStatus(m,isErr){msg.textContent=isErr?'':(m||'');errEl.textContent=isErr?(m||''):''}
+  function fmtSize(b){return b<1048576?Math.max(1,Math.round(b/1024))+' KB':(b/1048576).toFixed(1)+' MB'}
 
   function addFiles(fl){
-    var skipped = 0;
-    Array.prototype.forEach.call(fl, function(f){
-      if (f.type && f.type.indexOf('image/') === 0) {
-        files.push({id: nextId++, file: f, url: URL.createObjectURL(f)});
-      } else { skipped++; }
+    var skipped=0;
+    Array.prototype.forEach.call(fl,function(f){
+      if(f.type&&f.type.indexOf('image/')===0){files.push({id:nextId++,file:f,url:URL.createObjectURL(f)})}else{skipped++}
     });
-    setStatus(skipped ? skipped + ' file(s) skipped because they are not images.' : '', !!skipped);
+    setStatus(skipped?skipped+' file(s) skipped because they are not images.':'',!!skipped);
     render();
   }
 
+  function iconBtn(label,aria,disabled,fn){
+    var el=document.createElement('button');
+    el.type='button';el.className='icon-btn';el.textContent=label;
+    el.setAttribute('aria-label',aria);el.disabled=disabled;el.onclick=fn;return el;
+  }
+
   function render(){
-    list.innerHTML = '';
-    files.forEach(function(item, i){
-      var li = document.createElement('li');
-      var img = document.createElement('img');
-      img.className = 'thumb'; img.src = item.url; img.alt = '';
-      var meta = document.createElement('div'); meta.className = 'meta';
-      var b = document.createElement('b'); b.textContent = (i+1) + '. ' + item.file.name;
-      var s = document.createElement('span'); s.textContent = fmtSize(item.file.size);
-      meta.appendChild(b); meta.appendChild(s);
-      var act = document.createElement('div'); act.className = 'row-actions';
-      act.appendChild(btn('\u2191', 'Move up', i === 0, function(){ move(i,-1); }));
-      act.appendChild(btn('\u2193', 'Move down', i === files.length-1, function(){ move(i,1); }));
-      var del = btn('\u2715', 'Remove', false, function(){ remove(i); }); del.classList.add('del');
-      act.appendChild(del);
-      li.appendChild(img); li.appendChild(meta); li.appendChild(act);
-      list.appendChild(li);
+    list.innerHTML='';
+    files.forEach(function(item,i){
+      var li=document.createElement('li');
+      var img=document.createElement('img');img.className='thumb';img.src=item.url;img.alt='';
+      var meta=document.createElement('div');meta.className='meta';
+      var b=document.createElement('b');b.textContent=(i+1)+'. '+item.file.name;
+      var s=document.createElement('span');s.textContent=fmtSize(item.file.size);
+      meta.appendChild(b);meta.appendChild(s);
+      var act=document.createElement('div');act.className='acts';
+      act.appendChild(iconBtn('\u2191','Move up',i===0,function(){move(i,-1)}));
+      act.appendChild(iconBtn('\u2193','Move down',i===files.length-1,function(){move(i,1)}));
+      var del=iconBtn('\u2715','Remove',false,function(){remove(i)});del.classList.add('del');act.appendChild(del);
+      li.appendChild(img);li.appendChild(meta);li.appendChild(act);list.appendChild(li);
     });
-    make.disabled = files.length === 0;
-    clearBtn.classList.toggle('hidden', files.length === 0);
+    make.disabled=files.length===0;
+    clearBtn.hidden=files.length===0;
   }
+  function move(i,d){var j=i+d;if(j<0||j>=files.length)return;var t=files[i];files[i]=files[j];files[j]=t;render()}
+  function remove(i){URL.revokeObjectURL(files[i].url);files.splice(i,1);render()}
+  clearBtn.onclick=function(){files.forEach(function(f){URL.revokeObjectURL(f.url)});files=[];setStatus('');render()};
 
-  function btn(label, aria, disabled, fn){
-    var el = document.createElement('button');
-    el.type = 'button'; el.className = 'icon'; el.textContent = label;
-    el.setAttribute('aria-label', aria); el.disabled = disabled; el.onclick = fn;
-    return el;
-  }
-  function move(i, d){
-    var j = i + d; if (j < 0 || j >= files.length) return;
-    var t = files[i]; files[i] = files[j]; files[j] = t; render();
-  }
-  function remove(i){ URL.revokeObjectURL(files[i].url); files.splice(i,1); render(); }
+  picker.onchange=function(){addFiles(picker.files);picker.value=''};
+  ['dragenter','dragover'].forEach(function(e){drop.addEventListener(e,function(ev){ev.preventDefault();drop.classList.add('over')})});
+  ['dragleave','drop'].forEach(function(e){drop.addEventListener(e,function(ev){ev.preventDefault();drop.classList.remove('over')})});
+  drop.addEventListener('drop',function(e){if(e.dataTransfer)addFiles(e.dataTransfer.files)});
+  sizeSel.onchange=function(){orientWrap.style.display=sizeSel.value==='fit'?'none':''};
 
-  clearBtn.onclick = function(){
-    files.forEach(function(f){ URL.revokeObjectURL(f.url); });
-    files = []; setStatus(''); render();
-  };
+  function loadImage(url){return new Promise(function(res,rej){var im=new Image();im.onload=function(){res(im)};im.onerror=function(){rej(new Error('load'))};im.src=url})}
+  function tick(){return new Promise(function(r){setTimeout(r,0)})}
+  var PAGES={a4:[595.28,841.89],letter:[612,792]},MAX_SIDE=2600;
 
-  picker.onchange = function(){ addFiles(picker.files); picker.value = ''; };
-  ['dragenter','dragover'].forEach(function(ev){
-    drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.add('over'); });
-  });
-  ['dragleave','drop'].forEach(function(ev){
-    drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.remove('over'); });
-  });
-  drop.addEventListener('drop', function(e){ if (e.dataTransfer) addFiles(e.dataTransfer.files); });
-
-  sizeSel.onchange = function(){ orientWrap.style.display = sizeSel.value === 'fit' ? 'none' : ''; };
-
-  function loadImage(url){
-    return new Promise(function(res, rej){
-      var im = new Image();
-      im.onload = function(){ res(im); };
-      im.onerror = function(){ rej(new Error('load')); };
-      im.src = url;
-    });
-  }
-  function tick(){ return new Promise(function(r){ setTimeout(r, 0); }); }
-
-  var PAGES = { a4: [595.28, 841.89], letter: [612, 792] };
-  var MAX_SIDE = 2600;
-
-  make.onclick = async function(){
-    if (!window.jspdf) { setStatus('The PDF library did not load. Check your internet connection and try again.', true); return; }
-    var jsPDF = window.jspdf.jsPDF;
-    var size = sizeSel.value, orient = $('orient').value;
-    var margin = parseFloat($('margin').value), q = parseFloat($('quality').value);
-    var pdf = null, done = 0, failed = [];
-    make.disabled = true;
-
-    for (var i = 0; i < files.length; i++) {
-      setStatus('Processing image ' + (i+1) + ' of ' + files.length + '\u2026');
+  make.onclick=async function(){
+    if(!window.jspdf){setStatus('The PDF library did not load. Check your internet connection and try again.',true);return}
+    var jsPDF=window.jspdf.jsPDF;
+    var size=sizeSel.value,orient=$('orient').value,margin=parseFloat($('margin').value),q=parseFloat($('quality').value);
+    var pdf=null,done=0,failed=[];
+    make.disabled=true;setStatus('');
+    for(var i=0;i<files.length;i++){
+      setStatus('Processing image '+(i+1)+' of '+files.length+'\u2026');
       await tick();
-      try {
-        var im = await loadImage(files[i].url);
-        var w = im.naturalWidth, h = im.naturalHeight;
-        var sc = Math.min(1, MAX_SIDE / Math.max(w, h));
-        var cv = document.createElement('canvas');
-        cv.width = Math.round(w * sc); cv.height = Math.round(h * sc);
-        var ctx = cv.getContext('2d');
-        ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, cv.width, cv.height);
-        ctx.drawImage(im, 0, 0, cv.width, cv.height);
-        var data = cv.toDataURL('image/jpeg', q);
-        cv.width = cv.height = 0;
-
-        var pw, ph;
-        if (size === 'fit') {
-          var k = Math.min(0.75, 1200 / Math.max(w, h));
-          pw = w * k + margin * 2;
-          ph = h * k + margin * 2;
-        } else {
-          var base = PAGES[size];
-          var land = orient === 'l' || (orient === 'auto' && w > h);
-          pw = land ? base[1] : base[0];
-          ph = land ? base[0] : base[1];
-        }
-        var boxW = pw - margin * 2, boxH = ph - margin * 2;
-        var r = Math.min(boxW / w, boxH / h);
-        var dw = w * r, dh = h * r;
-        var x = (pw - dw) / 2, y = (ph - dh) / 2;
-        var o = pw > ph ? 'l' : 'p';
-
-        if (!pdf) pdf = new jsPDF({ unit: 'pt', format: [pw, ph], orientation: o, compress: true });
-        else pdf.addPage([pw, ph], o);
-        pdf.addImage(data, 'JPEG', x, y, dw, dh, undefined, 'FAST');
+      try{
+        var im=await loadImage(files[i].url),w=im.naturalWidth,h=im.naturalHeight;
+        var sc=Math.min(1,MAX_SIDE/Math.max(w,h)),cv=document.createElement('canvas');
+        cv.width=Math.round(w*sc);cv.height=Math.round(h*sc);
+        var cx=cv.getContext('2d');cx.fillStyle='#fff';cx.fillRect(0,0,cv.width,cv.height);
+        cx.drawImage(im,0,0,cv.width,cv.height);
+        var data=cv.toDataURL('image/jpeg',q);cv.width=cv.height=0;
+        var pw,ph;
+        if(size==='fit'){var k=Math.min(0.75,1200/Math.max(w,h));pw=w*k+margin*2;ph=h*k+margin*2}
+        else{var base=PAGES[size],land=orient==='l'||(orient==='auto'&&w>h);pw=land?base[1]:base[0];ph=land?base[0]:base[1]}
+        var r=Math.min((pw-margin*2)/w,(ph-margin*2)/h),dw=w*r,dh=h*r,o=pw>ph?'l':'p';
+        if(!pdf)pdf=new jsPDF({unit:'pt',format:[pw,ph],orientation:o,compress:true});else pdf.addPage([pw,ph],o);
+        pdf.addImage(data,'JPEG',(pw-dw)/2,(ph-dh)/2,dw,dh,undefined,'FAST');
         done++;
-      } catch (e) {
-        failed.push(files[i].file.name);
-      }
+      }catch(e){failed.push(files[i].file.name)}
     }
-
-    if (pdf && done) {
+    if(pdf&&done){
       pdf.save('smartkit-images.pdf');
-      var msg = 'Done. Your PDF has ' + done + ' page' + (done > 1 ? 's' : '') + '.';
-      if (failed.length) msg += ' Could not read: ' + failed.join(', ') + '.';
-      setStatus(msg, failed.length > 0);
-    } else {
-      setStatus('None of the files could be read as images. Try JPG or PNG files.', true);
-    }
-    make.disabled = files.length === 0;
+      var m='Done. Your PDF has '+done+' page'+(done>1?'s':'')+'.';
+      if(failed.length)m+=' Could not read: '+failed.join(', ')+'.';
+      setStatus(m,false);
+    }else{setStatus('None of the files could be read as images. Try JPG or PNG files.',true)}
+    make.disabled=files.length===0;
   };
-
   render();
 })();
 </script>
