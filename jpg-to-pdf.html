@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JPG to PDF Converter – Free, No Upload | SmartKit Tools</title>
+<meta name="description" content="Convert JPG, PNG and WebP photos to a single PDF for free. Reorder pages, choose A4 or Letter. Your files never leave your device.">
+<style>
+:root{
+  --bg:#F4F6F5; --surface:#fff; --ink:#12201C; --muted:#5A6B66; --line:#DCE3E0;
+  --accent:#0B6B57; --accent-ink:#fff; --accent-soft:#E3F1EC; --danger:#B3261E;
+}
+@media (prefers-color-scheme:dark){
+  :root{ --bg:#0E1513; --surface:#16201D; --ink:#E8F0ED; --muted:#93A59F; --line:#2A3834;
+    --accent:#3DB894; --accent-ink:#06241C; --accent-soft:#17302A; --danger:#F2B8B5; }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.6 "Segoe UI",Roboto,"Noto Sans Bengali","Hind Siliguri",system-ui,sans-serif}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+header.site{background:var(--surface);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;justify-content:space-between;align-items:center;height:56px}
+.brand{font-weight:700;font-size:18px;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+.brand span{color:var(--accent)}
+header.site a.back{font-size:14px;text-decoration:none}
+h1{font-size:clamp(26px,6vw,36px);line-height:1.2;letter-spacing:-.02em;margin:28px 0 8px}
+.lead{margin:0;color:var(--muted)}
+.lead-bn{margin:4px 0 0;color:var(--muted);font-size:15px}
+.tool{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;margin:22px 0}
+.drop{display:block;border:2px dashed var(--line);border-radius:12px;padding:28px 16px;text-align:center;cursor:pointer;
+  background:var(--bg);transition:border-color .15s,background .15s}
+.drop:hover,.drop.over{border-color:var(--accent);background:var(--accent-soft)}
+.drop strong{display:block;font-size:18px}
+.drop small{color:var(--muted)}
+.drop input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.drop:focus-within{outline:3px solid var(--accent);outline-offset:2px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.opts label{display:flex;flex-direction:column;font-size:14px;color:var(--muted);gap:4px}
+select{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 8px;min-height:44px}
+ul.files{list-style:none;margin:0;padding:0}
+ul.files li{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+ul.files li:first-child{border-top:0}
+.thumb{width:52px;height:52px;border-radius:8px;object-fit:cover;background:var(--bg);flex:none}
+.meta{flex:1;min-width:0}
+.meta b{display:block;font-weight:600;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meta span{font-size:13px;color:var(--muted)}
+.row-actions{display:flex;gap:4px;flex:none}
+.icon{min-width:40px;min-height:40px;border:1px solid var(--line);background:var(--surface);color:var(--ink);
+  border-radius:8px;font-size:16px;cursor:pointer}
+.icon:hover:not(:disabled){border-color:var(--accent)}
+.icon:disabled{opacity:.35;cursor:default}
+.icon.del{color:var(--danger)}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.btn{font:inherit;font-weight:600;min-height:48px;padding:0 22px;border-radius:10px;border:1px solid var(--accent);
+  background:var(--accent);color:var(--accent-ink);cursor:pointer;flex:1 1 200px}
+.btn:disabled{opacity:.5;cursor:default}
+.btn.ghost{background:transparent;color:var(--accent);flex:0 1 auto}
+#status{margin:12px 0 0;font-size:14px;color:var(--muted);min-height:1.4em}
+#status.err{color:var(--danger)}
+.hidden{display:none}
+article{padding:8px 0 48px}
+article h2{font-size:22px;letter-spacing:-.01em;margin:32px 0 8px}
+article ol,article ul{padding-left:20px}
+article li{margin:4px 0}
+details{border-top:1px solid var(--line);padding:10px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:600}
+details p{margin:8px 0 0;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:20px 0;font-size:14px;color:var(--muted)}
+@media (max-width:420px){.opts{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="/">Smart<span>Kit</span> Tools</a>
+    <a class="back" href="/">All tools</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>JPG to PDF Converter</h1>
+  <p class="lead">Combine photos into one PDF. Everything happens in your browser, so your files are never uploaded.</p>
+  <p class="lead-bn">ছবি থেকে PDF বানান। ফাইল আপনার ফোনেই থাকে, কোথাও আপলোড হয় না।</p>
+
+  <section class="tool" aria-label="JPG to PDF tool">
+    <label class="drop" id="drop">
+      <input type="file" id="picker" accept="image/*" multiple>
+      <strong>Choose images</strong>
+      <small>JPG, PNG or WebP. Tap here or drop files. ছবি বাছাই করুন।</small>
+    </label>
+
+    <div class="opts">
+      <label>Page size
+        <select id="size">
+          <option value="a4">A4</option>
+          <option value="letter">Letter</option>
+          <option value="fit">Same as image</option>
+        </select>
+      </label>
+      <label id="orientWrap">Orientation
+        <select id="orient">
+          <option value="auto">Auto</option>
+          <option value="p">Portrait</option>
+          <option value="l">Landscape</option>
+        </select>
+      </label>
+      <label>Margin
+        <select id="margin">
+          <option value="0">None</option>
+          <option value="20" selected>Small</option>
+          <option value="40">Large</option>
+        </select>
+      </label>
+      <label>Quality
+        <select id="quality">
+          <option value="0.92">High</option>
+          <option value="0.75" selected>Medium (smaller file)</option>
+          <option value="0.55">Low (smallest file)</option>
+        </select>
+      </label>
+    </div>
+
+    <ul class="files" id="list"></ul>
+
+    <div class="bar">
+      <button class="btn" id="make" disabled>Create PDF</button>
+      <button class="btn ghost hidden" id="clear" type="button">Clear all</button>
+    </div>
+    <p id="status" role="status" aria-live="polite"></p>
+  </section>
+
+  <article>
+    <h2>How to convert JPG to PDF</h2>
+    <ol>
+      <li>Choose one or more images from your phone or computer.</li>
+      <li>Use the arrow buttons to put the pages in order.</li>
+      <li>Pick a page size and select Create PDF. The file downloads right away.</li>
+    </ol>
+
+    <h2>Common questions</h2>
+    <details>
+      <summary>Are my images uploaded anywhere?</summary>
+      <p>No. The PDF is built inside your browser. Your photos stay on your device.</p>
+    </details>
+    <details>
+      <summary>How many images can I combine?</summary>
+      <p>There is no fixed limit. On a phone, 20 to 30 photos at a time works best. Use Medium or Low quality for very large photos.</p>
+    </details>
+    <details>
+      <summary>Can I use PNG or WebP images?</summary>
+      <p>Yes. Every image is converted to a PDF page, whatever its format.</p>
+    </details>
+    <details>
+      <summary>চাকরির আবেদনের জন্য কোন সাইজ বেছে নেব?</summary>
+      <p>A4 বেছে নিন এবং Quality Medium রাখুন। এতে ফাইলের সাইজ কম থাকে আর প্রিন্টেও ভালো দেখায়।</p>
+    </details>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">© SmartKit Tools. Free online tools that run in your browser.</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+(function(){
+  var files = [];            // {id, file, url}
+  var nextId = 1;
+  var $ = function(id){ return document.getElementById(id); };
+  var picker=$('picker'), drop=$('drop'), list=$('list'), make=$('make'), clearBtn=$('clear'),
+      statusEl=$('status'), sizeSel=$('size'), orientWrap=$('orientWrap');
+
+  function setStatus(msg, isErr){ statusEl.textContent = msg || ''; statusEl.className = isErr ? 'err' : ''; }
+
+  function fmtSize(b){
+    if (b < 1024*1024) return Math.max(1, Math.round(b/1024)) + ' KB';
+    return (b/1024/1024).toFixed(1) + ' MB';
+  }
+
+  function addFiles(fl){
+    var skipped = 0;
+    Array.prototype.forEach.call(fl, function(f){
+      if (f.type && f.type.indexOf('image/') === 0) {
+        files.push({id: nextId++, file: f, url: URL.createObjectURL(f)});
+      } else { skipped++; }
+    });
+    setStatus(skipped ? skipped + ' file(s) skipped because they are not images.' : '', !!skipped);
+    render();
+  }
+
+  function render(){
+    list.innerHTML = '';
+    files.forEach(function(item, i){
+      var li = document.createElement('li');
+      var img = document.createElement('img');
+      img.className = 'thumb'; img.src = item.url; img.alt = '';
+      var meta = document.createElement('div'); meta.className = 'meta';
+      var b = document.createElement('b'); b.textContent = (i+1) + '. ' + item.file.name;
+      var s = document.createElement('span'); s.textContent = fmtSize(item.file.size);
+      meta.appendChild(b); meta.appendChild(s);
+      var act = document.createElement('div'); act.className = 'row-actions';
+      act.appendChild(btn('\u2191', 'Move up', i === 0, function(){ move(i,-1); }));
+      act.appendChild(btn('\u2193', 'Move down', i === files.length-1, function(){ move(i,1); }));
+      var del = btn('\u2715', 'Remove', false, function(){ remove(i); }); del.classList.add('del');
+      act.appendChild(del);
+      li.appendChild(img); li.appendChild(meta); li.appendChild(act);
+      list.appendChild(li);
+    });
+    make.disabled = files.length === 0;
+    clearBtn.classList.toggle('hidden', files.length === 0);
+  }
+
+  function btn(label, aria, disabled, fn){
+    var el = document.createElement('button');
+    el.type = 'button'; el.className = 'icon'; el.textContent = label;
+    el.setAttribute('aria-label', aria); el.disabled = disabled; el.onclick = fn;
+    return el;
+  }
+
+  function move(i, d){
+    var j = i + d; if (j < 0 || j >= files.length) return;
+    var t = files[i]; files[i] = files[j]; files[j] = t; render();
+  }
+  function remove(i){ URL.revokeObjectURL(files[i].url); files.splice(i,1); render(); }
+
+  clearBtn.onclick = function(){
+    files.forEach(function(f){ URL.revokeObjectURL(f.url); });
+    files = []; setStatus(''); render();
+  };
+
+  picker.onchange = function(){ addFiles(picker.files); picker.value = ''; };
+  ['dragenter','dragover'].forEach(function(ev){
+    drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.add('over'); });
+  });
+  ['dragleave','drop'].forEach(function(ev){
+    drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.remove('over'); });
+  });
+  drop.addEventListener('drop', function(e){ if (e.dataTransfer) addFiles(e.dataTransfer.files); });
+
+  sizeSel.onchange = function(){ orientWrap.style.display = sizeSel.value === 'fit' ? 'none' : ''; };
+
+  function loadImage(url){
+    return new Promise(function(res, rej){
+      var im = new Image();
+      im.onload = function(){ res(im); };
+      im.onerror = function(){ rej(new Error('load')); };
+      im.src = url;
+    });
+  }
+  function tick(){ return new Promise(function(r){ setTimeout(r, 0); }); }
+
+  var PAGES = { a4: [595.28, 841.89], letter: [612, 792] };
+  var MAX_SIDE = 2600;       // longest image side in pixels, keeps phones from running out of memory
+
+  make.onclick = async function(){
+    if (!window.jspdf) { setStatus('The PDF library did not load. Check your internet connection and try again.', true); return; }
+    var jsPDF = window.jspdf.jsPDF;
+    var size = sizeSel.value, orient = $('orient').value;
+    var margin = parseFloat($('margin').value), q = parseFloat($('quality').value);
+    var pdf = null, done = 0, failed = [];
+    make.disabled = true;
+
+    for (var i = 0; i < files.length; i++) {
+      setStatus('Processing image ' + (i+1) + ' of ' + files.length + '\u2026');
+      await tick();
+      try {
+        var im = await loadImage(files[i].url);
+        var w = im.naturalWidth, h = im.naturalHeight;
+        var sc = Math.min(1, MAX_SIDE / Math.max(w, h));
+        var cv = document.createElement('canvas');
+        cv.width = Math.round(w * sc); cv.height = Math.round(h * sc);
+        var ctx = cv.getContext('2d');
+        ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, cv.width, cv.height);
+        ctx.drawImage(im, 0, 0, cv.width, cv.height);
+        var data = cv.toDataURL('image/jpeg', q);
+        cv.width = cv.height = 0;
+
+        var pw, ph;
+        if (size === 'fit') {
+          var k = Math.min(0.75, 1200 / Math.max(w, h));   // 96 dpi to points, capped at about 1200 pt
+          pw = w * k + margin * 2;
+          ph = h * k + margin * 2;
+        } else {
+          var base = PAGES[size];
+          var land = orient === 'l' || (orient === 'auto' && w > h);
+          pw = land ? base[1] : base[0];
+          ph = land ? base[0] : base[1];
+        }
+        var boxW = pw - margin * 2, boxH = ph - margin * 2;
+        var r = Math.min(boxW / w, boxH / h);
+        var dw = w * r, dh = h * r;
+        var x = (pw - dw) / 2, y = (ph - dh) / 2;
+        var o = pw > ph ? 'l' : 'p';
+
+        if (!pdf) pdf = new jsPDF({ unit: 'pt', format: [pw, ph], orientation: o, compress: true });
+        else pdf.addPage([pw, ph], o);
+        pdf.addImage(data, 'JPEG', x, y, dw, dh, undefined, 'FAST');
+        done++;
+      } catch (e) {
+        failed.push(files[i].file.name);
+      }
+    }
+
+    if (pdf && done) {
+      pdf.save('smartkit-images.pdf');
+      var msg = 'Done. Your PDF has ' + done + ' page' + (done > 1 ? 's' : '') + '.';
+      if (failed.length) msg += ' Could not read: ' + failed.join(', ') + '.';
+      setStatus(msg, failed.length > 0);
+    } else {
+      setStatus('None of the files could be read as images. Try JPG or PNG files.', true);
+    }
+    make.disabled = files.length === 0;
+  };
+
+  render();
+})();
+</script>
+</body>
+</html>
